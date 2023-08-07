@@ -1,5 +1,5 @@
 "use client";
-import Products from "@/app/(site)/components/Products";
+import Products from "../../components/Products";
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
 

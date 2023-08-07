@@ -1,7 +1,7 @@
+import Products from "../components/Products";
 import Banner from "./components/Banner";
 import Category from "./components/Category";
 import MainContainer from "./components/MainContainer";
-import Products from "./components/Products";
 import Promotion from "./components/Promotion";
 import Review from "./components/Review";
 

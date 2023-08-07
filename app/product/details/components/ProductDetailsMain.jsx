@@ -1,6 +1,5 @@
 "use client";
 
-import Products from "@/app/(site)/components/Products";
 import { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import {
@@ -10,6 +9,7 @@ import {
   BiLogoTwitter,
 } from "react-icons/bi";
 import SizeModal from "./SizeModal";
+import Products from "../../../components/Products";
 
 const ProductDetailsMain = () => {
   const [size, setSize] = useState("L");
