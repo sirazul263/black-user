@@ -1,11 +1,21 @@
 "use client";
+
+import { useRouter } from "next/navigation";
+
 const TopBar = () => {
+  const router = useRouter();
   return (
     <div className="bg-clr-primary py-2">
       <div className="container ">
         <div className="row">
           <div className="col-md-4">
-            <img src="../../img/logo.svg" alt="logo" style={{ height: 70 }} />
+            <img
+              src="../../img/logo.svg"
+              alt="logo"
+              style={{ height: 70 }}
+              className="cursor-pointer"
+              onClick={() => router.push("/")}
+            />
           </div>
           <div className="col-md-4">
             <div className="search-bar mt-md-3 ">

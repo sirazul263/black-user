@@ -10,7 +10,7 @@ const MenuBar = () => {
     >
       <Container>
         <Nav className="me-auto">
-          <Nav.Link href="#home">HOME</Nav.Link>
+          <Nav.Link href="/">HOME</Nav.Link>
           <Nav.Link href="#features">NEW ARRIVAL!</Nav.Link>
           <Nav.Link href="#pricing">AVAILABLE COLLECTION</Nav.Link>
           <Nav.Link href="#pricing">BLACK OFFICIAL CLOTH</Nav.Link>

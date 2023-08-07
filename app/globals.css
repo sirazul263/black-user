@@ -12,6 +12,7 @@ body:root {
 .primary-color {
   color: #fcd800;
 }
+
 .bg-clr-primary {
   background-color: #fcd800;
 }
@@ -74,4 +75,103 @@ body:root {
   top: 50%;
   left: 30%;
   transform: translate(-50%, -50%);
+}
+
+.paginationBtn {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+.paginationBtn a {
+  color: #666666;
+  padding: 8px 12px;
+  margin: 0 5px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.paginationBtn a:hover {
+  color: #56606d !important;
+  background-color: #fde8eb;
+  border-color: none;
+}
+.paginationActiveBtn a {
+  color: #fcd800 !important;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: rgba(95, 95, 95, 0.08);
+}
+@media (max-width: 780px) {
+  .paginationBtn a {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}
+
+.previousBtn {
+  padding: 8px 10px !important;
+}
+.nextBtn {
+  padding: 8px 10px !important;
+}
+
+/* Select field */
+.select-title .select-label {
+  z-index: 1;
+  background-color: #fff;
+  padding: 7px 16px;
+  border: 1px solid #000;
+  border-radius: 8px;
+}
+.select-title .select-label input:checked ~ .person-selection {
+  color: #fff;
+}
+.select-title .select-label input:checked ~ .person-selection .bg-color {
+  display: block !important;
+}
+.select-title .select-label .bg-color {
+  background-color: #000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: -1;
+  display: none;
+  border-radius: 8px;
+  border: none !important;
+}
+
+.add-btn {
+  border: 2px solid #000;
+  padding: 14px 20px;
+}
+
+.size-modal {
+  width: 450px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 24px;
+  min-height: 350px;
+}
+.size-modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+@media (max-width: 780px) {
+  .size-modal {
+    width: 100vw;
+    height: 100vh !important;
+  }
 }
