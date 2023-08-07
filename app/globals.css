@@ -1,0 +1,77 @@
+html,
+body:root {
+  font-family: var(--font-inter);
+  height: 100%;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1336px;
+  }
+}
+.primary-color {
+  color: #fcd800;
+}
+.bg-clr-primary {
+  background-color: #fcd800;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+.fs-14 {
+  font-size: 14px;
+}
+.radius-16 {
+  border-radius: 16px;
+}
+.radius-24 {
+  border-radius: 16px;
+}
+.radius-32 {
+  border-radius: 32px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Cart */
+
+.cart {
+  border: 2px solid #000;
+  padding: 6px 30px 6px 20px;
+  font-size: 14px;
+  border-radius: 32px;
+}
+
+.cart-number {
+  margin-right: 12px;
+  border-radius: 50%;
+}
+
+.avatar {
+  border: 2px solid #fff;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+/* Navbar */
+
+.nav-link {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #fff;
+}
+.centered-text {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+.promotion-text {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
