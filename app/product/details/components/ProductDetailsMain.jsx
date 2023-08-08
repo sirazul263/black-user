@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+
 import {
   BiLogoFacebook,
   BiLogoInstagramAlt,
@@ -10,6 +11,7 @@ import {
 } from "react-icons/bi";
 import SizeModal from "./SizeModal";
 import Products from "../../../components/Products";
+import { useRouter } from "next/navigation";
 
 const ProductDetailsMain = () => {
   const [size, setSize] = useState("L");
@@ -40,6 +42,8 @@ const ProductDetailsMain = () => {
   ];
 
   const [showSize, setShowSize] = useState(false);
+
+  const router = useRouter();
 
   return (
     <section>
@@ -162,6 +166,7 @@ const ProductDetailsMain = () => {
               <button
                 type="button"
                 className="w-100 radius-32 bg-dark border-0 text-white fw-bold py-3"
+                onClick={() => router.push("/checkout")}
               >
                 BUY NOW
               </button>
