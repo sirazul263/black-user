@@ -7,7 +7,9 @@ const Header = () => {
   return (
     <div>
       <TopBar />
-      <MenuBar />
+      <div className="d-none d-md-block">
+        <MenuBar />
+      </div>
     </div>
   );
 };

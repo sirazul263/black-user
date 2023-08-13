@@ -20,19 +20,34 @@ const Category = () => {
         </div>
         <div className="col-md-3 col-6">
           <div className="d-flex justify-content-center">
-            <img alt="Category" src="../../../img/category2.svg" />
+            <img
+              alt="Category"
+              src="../../../img/category2.svg"
+              className="img-fluid cursor-pointer"
+              onClick={() => router.push("/product")}
+            />
           </div>
           <p className="fw-bold text-center">MAN CLOTH</p>
         </div>
         <div className="col-md-3 col-6">
           <div className="d-flex justify-content-center">
-            <img alt="Category" src="../../../img/category3.svg" />
+            <img
+              alt="Category"
+              src="../../../img/category3.svg"
+              className="img-fluid cursor-pointer"
+              onClick={() => router.push("/product")}
+            />
           </div>
           <p className="fw-bold text-center">WOMEN CLOTH</p>
         </div>
         <div className="col-md-3 col-6">
           <div className="d-flex justify-content-center">
-            <img alt="Category" src="../../../img/category4.svg" />
+            <img
+              alt="Category"
+              src="../../../img/category4.svg"
+              className="img-fluid cursor-pointer"
+              onClick={() => router.push("/product")}
+            />
           </div>
           <p className="fw-bold text-center">KID CLOTH</p>
         </div>

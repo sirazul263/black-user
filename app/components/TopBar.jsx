@@ -8,7 +8,7 @@ const TopBar = () => {
     <div className="bg-clr-primary py-2">
       <div className="container ">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-4 col-3">
             <img
               src="../../img/logo.svg"
               alt="logo"
@@ -17,8 +17,8 @@ const TopBar = () => {
               onClick={() => router.push("/")}
             />
           </div>
-          <div className="col-md-4">
-            <div className="search-bar mt-md-3 ">
+          <div className="col-md-4 col-9">
+            <div className="search-bar mt-3 ">
               <div className="search-box position-relative ">
                 <button
                   className="btn position-absolute start-0 py-2"
@@ -41,7 +41,7 @@ const TopBar = () => {
                 <input
                   type="text"
                   name="search"
-                  className="form-control border-0 py-2 ps-md-5 radius-32"
+                  className="form-control border-0 py-2 ps-5 radius-32"
                   placeholder="Search"
                   // onChange={(e) => setPropertyName(e.target.value)}
                   // value={propertyName}
@@ -49,7 +49,7 @@ const TopBar = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-4 d-flex align-items-center justify-content-end">
+          <div className="col-md-4 d-none d-md-flex align-items-center justify-content-end">
             <div className="d-flex align-items-center ">
               <div>
                 <div className="cart position-relative bg-white me-4">

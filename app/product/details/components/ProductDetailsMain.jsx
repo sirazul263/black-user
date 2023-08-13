@@ -58,7 +58,7 @@ const ProductDetailsMain = () => {
                   className="img-fluid"
                 />
               </div>
-              <div>
+              <div className="d-none d-md-block">
                 <div>
                   <img
                     alt="Category"
@@ -88,6 +88,36 @@ const ProductDetailsMain = () => {
                   />
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="d-flex my-3  d-md-none">
+            <div>
+              <img
+                alt="Category"
+                src="../../../img/box1.svg"
+                className="img-fluid"
+              />
+            </div>
+            <div className="mx-3">
+              <img
+                alt="Category"
+                src="../../../img/box2.svg"
+                className="img-fluid"
+              />
+            </div>
+            <div>
+              <img
+                alt="Category"
+                src="../../../img/box3.svg"
+                className="img-fluid"
+              />
+            </div>
+            <div className="ms-3">
+              <img
+                alt="Category"
+                src="../../../img/box2.svg"
+                className="img-fluid"
+              />
             </div>
           </div>
         </div>
@@ -171,7 +201,7 @@ const ProductDetailsMain = () => {
                 BUY NOW
               </button>
             </div>
-            <div className="d-flex justify-content-center mt-md-5 fw-bold">
+            <div className="d-flex justify-content-center mt-5 fw-bold">
               <BiLogoFacebook size={24} className="cursor-pointer" />
               <BiLogoInstagramAlt size={24} className="mx-4 cursor-pointer" />
               <BiLogoLinkedin size={24} className="cursor-pointer" />

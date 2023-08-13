@@ -8,24 +8,47 @@ import {
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="bg-clr-primary mt-md-5 mt-3">
+    <footer className="mt-md-5 mt-3">
+      <div className="d-md-none " style={{ backgroundColor: "#C2AB1C" }}>
+        <div className="d-flex justify-content-between text-white px-2 py-2">
+          <div className="fs-12 fw-300">
+            <BiLogoFacebook size={16} />
+            facebook
+          </div>
+          <div className="fs-12 fw-300">
+            <BiLogoInstagramAlt size={16} className="me-1" />
+            instagram
+          </div>
+          <div className="fs-12 fw-300">
+            <BiLogoLinkedin size={16} className="me-1" />
+            linkedin
+          </div>
+          <div className="fs-12 fw-300">
+            <BiLogoTwitter size={16} className="" />
+            twitter
+          </div>
+        </div>
+      </div>
+      <div className="bg-clr-primary ">
         <div className="container py-md-5 py-3">
-          <img src="../../img/logo.svg" alt="logo" style={{ height: 70 }} />
+          <div className="d-none d-md-block">
+            {" "}
+            <img src="../../img/logo.svg" alt="logo" style={{ height: 70 }} />
+          </div>
           <div className="row">
             <div className="col-md-5 mb-3">
               <p className="mt-md-4 fs-14" style={{ maxWidth: 270 }}>
                 Company is an uprising support provider with a bunch of people
                 from different fields of expertise
               </p>
-              <div className="d-flex mt-md-5">
+              <div className="d-flex mt-md-5 d-none d-md-block">
                 <BiLogoFacebook size={20} />
                 <BiLogoInstagramAlt size={20} className="mx-4" />
                 <BiLogoLinkedin size={20} />
                 <BiLogoTwitter size={20} className="mx-4" />
               </div>
             </div>
-            <div className="col-md-2 mb-3">
+            <div className="col-md-2 col-6 mb-3">
               <p className="fw-bold">COMPANY</p>
               <ul className="widget-menu list-unstyled mb-0">
                 <li className="mb-3 fs-14 fw-bold">
@@ -66,7 +89,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="col-md-2 mb-3">
+            <div className="col-md-2 col-6 mb-3">
               <p className="fw-bold">LEGAL</p>
               <ul className="widget-menu list-unstyled mb-0">
                 <li className="mb-3 fs-14 fw-bold">

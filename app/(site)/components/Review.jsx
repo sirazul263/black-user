@@ -12,7 +12,7 @@ const Review = () => {
         <div className="col-3 d-flex justify-content-center">
           <div className="d-flex align-items-center justify-content-around">
             <p className="mb-0 cursor-pointer">PREV.</p>
-            <div className="ms-5 ">
+            <div className="ms-md-5 ms-2 ">
               <svg
                 width="2"
                 height="45"
@@ -49,7 +49,7 @@ const Review = () => {
         </div>
         <div className="col-3 d-flex justify-content-center">
           <div className="d-flex align-items-center justify-content-around">
-            <div className="me-5 ">
+            <div className="me-md-5  me-2">
               <svg
                 width="2"
                 height="45"

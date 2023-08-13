@@ -3,7 +3,7 @@ import { Quantico } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
+import BottomNavbar from "./components/BottomNavbar";
 const quantico = Quantico({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={quantico.className}>
         <Header />
+        <BottomNavbar />
         {children}
         <Footer />
       </body>
