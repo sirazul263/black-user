@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-const TopBar = () => {
+const TopBar = ({ cartItemsCount }) => {
   const router = useRouter();
   return (
     <div className="bg-clr-primary py-2">
@@ -50,12 +50,17 @@ const TopBar = () => {
             </div>
           </div>
           <div className="col-md-4 d-none d-md-flex align-items-center justify-content-end">
-            <div className="d-flex align-items-center ">
+            <div
+              className="d-flex align-items-center cursor-pointer "
+              onClick={() =>
+                cartItemsCount > 0 ? router.push("/checkout") : {}
+              }
+            >
               <div>
                 <div className="cart position-relative bg-white me-4">
                   <div className="">Cart</div>
                   <div className="position-absolute top-0 mt-1 end-0 cart-number  bg-clr-primary px-1 py-0">
-                    <p className="mb-0 fs-12"> 2</p>
+                    <p className="mb-0 fs-12"> {cartItemsCount}</p>
                   </div>
                 </div>
               </div>

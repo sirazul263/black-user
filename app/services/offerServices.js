@@ -1,0 +1,15 @@
+import axios from "axios";
+const api = process.env.API_URL;
+
+//Login
+export const getOffers = async (setLoading) => {
+  setLoading(true);
+  try {
+    const res = await axios.get(`${api}/offers/`);
+    setLoading(false);
+    return res.data;
+  } catch (e) {
+    setLoading(false);
+    return e.response.data;
+  }
+};
