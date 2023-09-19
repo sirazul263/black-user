@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Store } from "../../utils/Store";
-import { toast } from "react-toastify";
+
 const ProductSummary = ({ items, total }) => {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
@@ -14,12 +14,24 @@ const ProductSummary = ({ items, total }) => {
     const data = { ...item };
     const variation = { ...data.variation };
     variation.quantity = quantity;
+    data.variation = variation;
     dispatch({
       type: "CART_ADD_ITEM",
-      payload: { ...data, quantity: quantity },
+      payload: { ...data },
     });
   };
 
+  const subtractToCartHandler = async (item) => {
+    const quantity = item.variation.quantity - 1;
+    const data = { ...item };
+    const variation = { ...data.variation };
+    variation.quantity = quantity;
+    data.variation = variation;
+    dispatch({
+      type: "CART_ADD_ITEM",
+      payload: { ...data },
+    });
+  };
   const removeItemHandler = (item) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
   };
@@ -67,7 +79,7 @@ const ProductSummary = ({ items, total }) => {
               >
                 <button
                   className="border-0 bg-transparent"
-                  // onClick={() => addToCartHandler(item)}
+                  onClick={() => subtractToCartHandler(item)}
                 >
                   <AiOutlineMinus size={12} />
                 </button>

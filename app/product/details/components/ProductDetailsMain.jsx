@@ -51,6 +51,11 @@ const ProductDetailsMain = () => {
     const variationId = result.variations.find(
       (variation) => variation.size === size
     );
+
+    const existingItem = state.cart.cartItems.find(
+      (item) => item.id == Id && item.variation.id === variationId.id
+    );
+    const quantity = existingItem ? existingItem.variation.quantity + 1 : item;
     const data = {
       id: result.id,
       name: result.name,
@@ -58,25 +63,20 @@ const ProductDetailsMain = () => {
       image: result.image_urls[0],
       variation: {
         id: variationId.id,
-        quantity: item,
+        quantity: quantity,
         color: variationId.color,
       },
     };
-
-    const existingItem = state.cart.cartItems.find(
-      (item) => item.id === Id && item.variation.id === variationId.id
-    );
-    const quantity = existingItem ? existingItem.variation.quantity + 1 : 1;
-
     if (variationId.quantity < quantity) {
       toast.warning("Sorry. Product is out of stock", {
         autoClose: 200,
       });
       return;
     }
+
     dispatch({
       type: "CART_ADD_ITEM",
-      payload: { ...data, quantity: quantity },
+      payload: { ...data },
     });
   };
 

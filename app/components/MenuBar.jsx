@@ -1,6 +1,6 @@
 "use client";
 import { Container, Nav, Navbar } from "react-bootstrap";
-const MenuBar = () => {
+const MenuBar = ({ categories }) => {
   return (
     <Navbar
       bg="dark"
@@ -11,16 +11,11 @@ const MenuBar = () => {
       <Container>
         <Nav className="me-auto">
           <Nav.Link href="/">HOME</Nav.Link>
-          <Nav.Link href="#features">NEW ARRIVAL!</Nav.Link>
-          <Nav.Link href="#pricing">AVAILABLE COLLECTION</Nav.Link>
-          <Nav.Link href="#pricing">BLACK OFFICIAL CLOTH</Nav.Link>
-          <Nav.Link href="#pricing">CURVED VISOR CAP</Nav.Link>
-          <Nav.Link href="#pricing">FLAT DISCOUNT%</Nav.Link>{" "}
-          <Nav.Link href="#pricing">BASIC CAP</Nav.Link>{" "}
-          <Nav.Link href="#pricing">MAN CLOTH</Nav.Link>{" "}
-          <Nav.Link href="#pricing">WOMEN CLOTH</Nav.Link>
-          <Nav.Link href="#pricing">KIDS CLOTH</Nav.Link>
-          <Nav.Link href="#pricing">BKASH PAYMENT</Nav.Link>
+          {categories?.map((category, i) => (
+            <Nav.Link href={"/product"} key={i}>
+              {category.name.toUpperCase()}
+            </Nav.Link>
+          ))}
         </Nav>
       </Container>
     </Navbar>

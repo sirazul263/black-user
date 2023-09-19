@@ -17,7 +17,7 @@ const Banner = () => {
 
   return (
     <div className="container mt-md-5 mt-4">
-      <marquee style={{ width: "80%", padding: " 10px 0" }} className="fw-bold">
+      <marquee style={{ padding: " 10px 0" }} className="fw-bold">
         COMPLETE YOUR OUTFIT WITH CAPS. GETS AWESOME DESIGN DAILY
       </marquee>
       {loading ? (
