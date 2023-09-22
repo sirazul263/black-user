@@ -12,7 +12,7 @@ const MenuBar = ({ categories }) => {
         <Nav className="me-auto">
           <Nav.Link href="/">HOME</Nav.Link>
           {categories?.map((category, i) => (
-            <Nav.Link href={"/product"} key={i}>
+            <Nav.Link href={`/product?category_id=${category.id}`} key={i}>
               {category.name.toUpperCase()}
             </Nav.Link>
           ))}

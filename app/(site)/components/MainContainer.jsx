@@ -11,8 +11,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import Cookies from "js-cookie";
 
 const MainContainer = () => {
+  const user = Cookies.get("user_id");
+  if (!user) {
+    const user_id = Math.floor(Math.random() * 9000000000) + 1000000000;
+    Cookies.set("user_id", user_id, { expires: 30 });
+  }
   return (
     <Swiper
       spaceBetween={30}

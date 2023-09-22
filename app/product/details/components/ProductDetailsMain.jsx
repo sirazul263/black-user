@@ -16,6 +16,7 @@ import Loader from "../../../components/Loader";
 import { useSearchParams } from "next/navigation";
 import { Store } from "../../../utils/Store";
 import { toast } from "react-toastify";
+import { addToCart } from "../../../services/orderServices";
 
 const ProductDetailsMain = () => {
   const router = useRouter();
@@ -73,11 +74,48 @@ const ProductDetailsMain = () => {
       });
       return;
     }
+    const guest = Cookies.get("user_id");
+    const cartData = {
+      user_id: guest,
+      product_variation_id: variationId.id,
+      quantity: quantity,
+    };
+    const res = await addToCart(cartData);
+    if (res) {
+      dispatch({
+        type: "CART_ADD_ITEM",
+        payload: { ...data },
+      });
+      toast.success("Product  added to the cart", {
+        autoClose: 200,
+      });
+    }
+  };
 
-    dispatch({
-      type: "CART_ADD_ITEM",
-      payload: { ...data },
-    });
+  const handleBuyNow = () => {
+    if (!size) {
+      toast.warning("Please select a size", {
+        autoClose: 200,
+      });
+      return;
+    }
+    const variationId = result.variations.find(
+      (variation) => variation.size === size
+    );
+
+    const data = {
+      id: result.id,
+      name: result.name,
+      price: result.sell_price,
+      image: result.image_urls[0],
+      variation: {
+        id: variationId.id,
+        quantity: item,
+        color: variationId.color,
+      },
+    };
+    sessionStorage.setItem("data", JSON.stringify(data));
+    router.push("/checkout?type=buyNow");
   };
 
   return (
@@ -203,7 +241,7 @@ const ProductDetailsMain = () => {
                       <button
                         type="button"
                         className="w-100 radius-32 bg-dark border-0 text-white fw-bold py-3"
-                        onClick={() => router.push("/checkout")}
+                        onClick={handleBuyNow}
                       >
                         BUY NOW
                       </button>

@@ -12,7 +12,9 @@ export const CategoryProvider = ({ children }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       const categories = await getCategories(setLoading);
-      setCategories(categories);
+      if (categories.hasOwnProperty("data")) {
+        setCategories(categories.data);
+      }
     };
     fetchCategories();
   }, []);

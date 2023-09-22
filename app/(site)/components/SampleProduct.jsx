@@ -13,6 +13,7 @@ const SampleProduct = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const products = await getProducts(setLoading);
+
       setResult(products);
     };
     fetchProducts();
@@ -25,8 +26,8 @@ const SampleProduct = () => {
         ) : (
           <div className="row">
             {result &&
-              result.length > 0 &&
-              result.map((product, index) => (
+              result.data.length > 0 &&
+              result.data.map((product, index) => (
                 <Products res={product} key={index} />
               ))}
           </div>

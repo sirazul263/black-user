@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Store } from "../../utils/Store";
+import { toast } from "react-toastify";
 
 const ProductSummary = ({ items, total }) => {
   const { state, dispatch } = useContext(Store);
@@ -19,6 +20,9 @@ const ProductSummary = ({ items, total }) => {
       type: "CART_ADD_ITEM",
       payload: { ...data },
     });
+    toast.success("Product  added to the cart", {
+      autoClose: 200,
+    });
   };
 
   const subtractToCartHandler = async (item) => {
@@ -30,6 +34,9 @@ const ProductSummary = ({ items, total }) => {
     dispatch({
       type: "CART_ADD_ITEM",
       payload: { ...data },
+    });
+    toast.success("Product  removed from the cart", {
+      autoClose: 200,
     });
   };
   const removeItemHandler = (item) => {
