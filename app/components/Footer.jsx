@@ -42,7 +42,10 @@ const Footer = () => {
                 from different fields of expertise
               </p>
               <div className="d-flex mt-md-5 d-none d-md-block">
-                <BiLogoFacebook size={20} />
+                <a href="https://www.facebook.com/Blacklifestyleo">
+                  <BiLogoFacebook size={20} color={"black"} />
+                </a>
+
                 <BiLogoInstagramAlt size={20} className="mx-4" />
                 <BiLogoLinkedin size={20} />
                 <BiLogoTwitter size={20} className="mx-4" />
@@ -60,24 +63,7 @@ const Footer = () => {
                     <span className="text-dark cursor-pointer">About us</span>
                   </a>
                 </li>
-                <li className="mb-3 fs-14 fw-bold">
-                  <a
-                    href="/contact-us"
-                    className="text-decoration-none"
-                    target="_blank"
-                  >
-                    <span className="text-dark cursor-pointer">Contact us</span>
-                  </a>
-                </li>
-                <li className="mb-3 fs-14 fw-bold">
-                  <a
-                    href="/career"
-                    className="text-decoration-none"
-                    target="_blank"
-                  >
-                    <span className="text-dark cursor-pointer">Career</span>
-                  </a>
-                </li>
+
                 <li className="mb-3 fs-14 fw-bold">
                   <a
                     href="/faq"
@@ -116,7 +102,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-3 fs-14 fw-bold">
                   <a
-                    href="/career"
+                    href="/return-policy"
                     className="text-decoration-none"
                     target="_blank"
                   >
@@ -127,7 +113,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-3 fs-14 fw-bold">
                   <a
-                    href="/faq"
+                    href="/delivery-policy"
                     className="text-decoration-none"
                     target="_blank"
                   >

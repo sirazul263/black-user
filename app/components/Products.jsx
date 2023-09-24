@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 const Products = ({ res }) => {
   const router = useRouter();
   return (
-    <div className="col-md-3 col-6 mb-4 d-flex justify-content-center">
+    <div className="col-md-3 col-4 mb-4 d-flex justify-content-center">
       <div>
         <div
           className=" cursor-pointer"
@@ -16,7 +16,7 @@ const Products = ({ res }) => {
             className="img-fluid product-image"
           />
         </div>
-        <div className="">
+        <div className="category-name">
           <p className="fs-12 mt-3 fw-semibold mb-1">
             {res.name.toUpperCase()}
           </p>

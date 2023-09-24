@@ -5,10 +5,12 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { Store } from "../../utils/Store";
 import { toast } from "react-toastify";
 
-const ProductSummary = ({ items, total }) => {
+const ProductSummary = ({ items, total, option }) => {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const { cartItems } = cart;
+
+  const deliveryCharge = option === "INSIDE" ? 60 : 130;
 
   const addToCartHandler = async (item) => {
     const quantity = item.variation.quantity + 1;
@@ -135,6 +137,13 @@ const ProductSummary = ({ items, total }) => {
                 )}
               </p>
             </div>
+            <div
+              className="d-flex justify-content-between mt-2"
+              style={{ borderBottom: "1px solid #ccc" }}
+            >
+              <p className="text-muted ">Delivery Charge</p>
+              <p className="fw-bold ">৳ {deliveryCharge}</p>
+            </div>
             <div className="d-flex justify-content-between fs-18 mt-3">
               <p className="fw-bold">Total</p>
               <div className="text-end">
@@ -143,7 +152,7 @@ const ProductSummary = ({ items, total }) => {
                   {cartItems.reduce(
                     (a, c) => a + c.variation.quantity * c.price,
                     0
-                  )}
+                  ) + deliveryCharge}
                 </p>
                 <p className="fs-13 fw-semibold">
                   (VAT included if applicable)

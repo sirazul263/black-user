@@ -25,3 +25,16 @@ export const getSingleProduct = async (Id, setLoading) => {
     return e.response.data;
   }
 };
+
+export const getBanners = async (setLoading) => {
+  setLoading(true);
+  const url = `${api}/slider-images`;
+  try {
+    const res = await axios.get(url);
+    setLoading(false);
+    return res.data;
+  } catch (e) {
+    setLoading(false);
+    return e.response.data;
+  }
+};

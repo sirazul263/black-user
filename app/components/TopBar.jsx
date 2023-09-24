@@ -1,9 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import MenuModal from "./MenuModal";
 
 const TopBar = ({ cartItemsCount }) => {
   const router = useRouter();
+  const [text, setText] = useState("");
+  const [isOpen, setIsOpen] = useState(true);
   return (
     <div className="bg-clr-primary py-2">
       <div className="container ">
@@ -43,9 +47,16 @@ const TopBar = ({ cartItemsCount }) => {
                   name="search"
                   className="form-control border-0 py-2 ps-5 radius-32"
                   placeholder="Search"
-                  // onChange={(e) => setPropertyName(e.target.value)}
-                  // value={propertyName}
+                  onChange={(e) => setText(e.target.value)}
+                  value={text}
                 />
+                {/* <MenuModal isOpen={isOpen} setIsOpen={setIsOpen}>
+                  <div className="result-list">
+                    <div>A</div>
+                    <div>A</div>
+                    <div>A</div>
+                  </div>
+                </MenuModal> */}
               </div>
             </div>
           </div>

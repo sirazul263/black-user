@@ -8,6 +8,7 @@ import { StoreProvider } from "./utils/Store";
 import { CategoryProvider } from "./utils/CategoryContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "react-modern-drawer/dist/index.css";
 const quantico = Quantico({
   subsets: ["latin"],
   weight: ["400", "700"],

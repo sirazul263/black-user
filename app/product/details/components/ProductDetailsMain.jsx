@@ -17,6 +17,7 @@ import { useSearchParams } from "next/navigation";
 import { Store } from "../../../utils/Store";
 import { toast } from "react-toastify";
 import { addToCart } from "../../../services/orderServices";
+import Cookies from "js-cookie";
 
 const ProductDetailsMain = () => {
   const router = useRouter();

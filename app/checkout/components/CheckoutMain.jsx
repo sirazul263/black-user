@@ -77,7 +77,11 @@ const CheckoutMain = () => {
           ) : (
             <div className="row ">
               <div className="d-md-none">
-                <ProductSummaryNow items={items} setItems={setItems} />
+                <ProductSummaryNow
+                  items={items}
+                  setItems={setItems}
+                  option={option}
+                />
               </div>
 
               <div className="col-md-6 mb-4">
@@ -139,18 +143,6 @@ const CheckoutMain = () => {
                                     checked={option === "OUTSIDE"}
                                   />
                                 </div>
-                                {option === "OUTSIDE" && (
-                                  <div className="mb-0">
-                                    <TextField
-                                      type="number"
-                                      className="form-control is-radius-5 fs-14"
-                                      id="full_name"
-                                      placeholder="BDT 120 "
-                                      name="full_name"
-                                      disabled
-                                    />
-                                  </div>
-                                )}
                               </div>
                             </div>
                           </Form2>
@@ -216,7 +208,11 @@ const CheckoutMain = () => {
               </div>
 
               <div className="col-md-6 d-none d-md-block">
-                <ProductSummaryNow items={items} setItems={setItems} />
+                <ProductSummaryNow
+                  items={items}
+                  setItems={setItems}
+                  option={option}
+                />
               </div>
             </div>
           )}
@@ -230,7 +226,11 @@ const CheckoutMain = () => {
           ) : (
             <div className="row ">
               <div className="d-md-none">
-                <ProductSummary items={cart.cartItems} total={cartItemsCount} />
+                <ProductSummary
+                  items={cart.cartItems}
+                  total={cartItemsCount}
+                  option={option}
+                />
               </div>
 
               <div className="col-md-6 mb-4">
@@ -244,11 +244,13 @@ const CheckoutMain = () => {
                     validationSchema={validate}
                     onSubmit={async (values) => {
                       const guest = Cookies.get("user_id");
+                      const deliveryCharge = option === "INSIDE" ? 60 : 130;
                       const data = {
-                        total_amount: cart.cartItems.reduce(
-                          (a, c) => a + c.variation.quantity * c.price,
-                          0
-                        ),
+                        total_amount:
+                          cart.cartItems.reduce(
+                            (a, c) => a + c.variation.quantity * c.price,
+                            0
+                          ) + deliveryCharge,
                         full_name: values.full_name,
                         phone: values.phone,
                         address: values.address,
@@ -358,7 +360,11 @@ const CheckoutMain = () => {
               </div>
 
               <div className="col-md-6 d-none d-md-block">
-                <ProductSummary items={cart.cartItems} total={cartItemsCount} />
+                <ProductSummary
+                  items={cart.cartItems}
+                  total={cartItemsCount}
+                  option={option}
+                />
               </div>
             </div>
           )}

@@ -31,7 +31,7 @@ const MainContainer = () => {
         clickable: true,
       }}
       navigation={true}
-      modules={[Autoplay, Pagination, Navigation]}
+      modules={[Autoplay, Pagination]}
       showSwitchArrows={false}
       className="mySwiper custom-arrow"
     >
@@ -46,7 +46,7 @@ const MainContainer = () => {
             <p className="text-uppercase">
               made in Indonesia, dedicated to Indonesia
             </p>
-            <h1 className="text-uppercase fw-bold hero-text">
+            <h1 className="text-uppercase  hero-text">
               Discover the Art of <br />
               Dressing Up
             </h1>
@@ -64,7 +64,7 @@ const MainContainer = () => {
             <p className="text-uppercase">
               made in Indonesia, dedicated to Indonesia
             </p>
-            <h1 className="text-uppercase fw-bold">
+            <h1 className="text-uppercase hero-text">
               Discover the Art of <br />
               Dressing Up
             </h1>
@@ -82,7 +82,7 @@ const MainContainer = () => {
             <p className="text-uppercase">
               made in Indonesia, dedicated to Indonesia
             </p>
-            <h1 className="text-uppercase fw-bold">
+            <h1 className="text-uppercase hero-text">
               Discover the Art of <br />
               Dressing Up
             </h1>

@@ -103,11 +103,20 @@ body:root {
   top: 30%;
   left: 40%;
   transform: translate(-50%, -50%);
+  font-family: Playfair Display !important;
+  font-weight: 500;
+  line-height: 50px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.centered-text h1 {
+  font-size: 70px;
 }
 @media (max-width: 780px) {
   .centered-text {
     top: 50%;
     left: 45%;
+    line-height: 20px !important;
   }
   .centered-text h1 {
     font-size: 20px;
@@ -116,6 +125,9 @@ body:root {
   .centered-text p {
     font-size: 12px;
     font-weight: 300 !important;
+  }
+  .category-name {
+    font-size: 10px;
   }
 }
 
@@ -176,7 +188,7 @@ body:root {
   background-color: #fff;
   padding: 7px 16px;
   border: 1px solid #000;
-  border-radius: 8px;
+  border-radius: 9px;
 }
 .select-title .select-label input:checked ~ .person-selection {
   color: #fff;
@@ -306,13 +318,8 @@ input {
   }
 }
 
-.category-image {
-  max-height: 221px;
-  border-radius: 10px;
-}
-
 .product-image {
-  height: 150px;
+  height: 100px;
   width: 274px;
 }
 .product-grid {
@@ -338,10 +345,16 @@ input {
   width: 100% !important;
   height: 100% !important;
 }
+
+.category-image {
+  height: 100px !important;
+  border-radius: 10px;
+  width: 100px !important;
+}
 @media (min-width: 780px) {
   .category-image {
-    width: 226px;
-    height: 221px;
+    width: 226px !important;
+    height: 221px !important;
   }
   .product-image {
     height: 269px;
@@ -354,22 +367,36 @@ input {
 
 .swiper-button-next {
   color: #eb1933 !important;
+  display: none !important;
 }
 
 .swiper-button-prev {
   color: #eb1933 !important;
+  display: none !important;
 }
 
-.swiper-pagination-bullet-active {
-  background-color: #eb1933 !important;
+.result-list {
+  width: 400px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+  position: relative;
 }
 
-.custom-arrow {
-  --swiper-navigation-size: 35px;
+.custom-modal {
+  position: absolute;
+  transform: translate(-50% -50%);
+  border-radius: 8px;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-
-@media (max-width: 480px) {
-  .custom-arrow {
-    --swiper-navigation-size: 25px;
-  }
+.overlay-styles {
+  position: relative;
 }

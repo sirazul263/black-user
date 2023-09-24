@@ -2,7 +2,9 @@
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 
-const ProductSummaryNow = ({ items, setItems, total }) => {
+const ProductSummaryNow = ({ items, setItems, total, option }) => {
+  const deliveryCharge = option === "INSIDE" ? 60 : 130;
+
   const addToCartHandler = async () => {
     const data = { ...items };
     const variation = { ...items.variation };
@@ -109,11 +111,18 @@ const ProductSummaryNow = ({ items, setItems, total }) => {
                 ৳ {items.variation.quantity * items.price}
               </p>
             </div>
+            <div
+              className="d-flex justify-content-between mt-2"
+              style={{ borderBottom: "1px solid #ccc" }}
+            >
+              <p className="text-muted ">Delivery Charge</p>
+              <p className="fw-bold ">৳ {deliveryCharge}</p>
+            </div>
             <div className="d-flex justify-content-between fs-18 mt-3">
               <p className="fw-bold">Total</p>
               <div className="text-end">
                 <p className="fw-bold mb-1 text-danger">
-                  ৳{items.variation.quantity * items.price}
+                  ৳{items.variation.quantity * items.price + deliveryCharge}
                 </p>
                 <p className="fs-13 fw-semibold">
                   (VAT included if applicable)
