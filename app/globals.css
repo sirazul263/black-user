@@ -408,3 +408,6 @@ input {
   color: #eb1933 !important;
   display: none !important;
 }
+.swiper-pagination-bullet-active {
+  background-color: white !important;
+}

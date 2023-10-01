@@ -13,7 +13,7 @@ const Category = () => {
       {categories && categories.length > 0 && (
         <div className="row px-md-5">
           {categories.map((category, i) => (
-            <div className="col-md-3 col-6 " key={i}>
+            <div className="col-md-3 col-4 " key={i}>
               <div className="d-flex justify-content-center ">
                 <img
                   alt="Category"
