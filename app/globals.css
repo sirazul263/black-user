@@ -399,3 +399,12 @@ input {
 .hover-class:hover {
   color: gray !important;
 }
+.swiper-button-next {
+  color: #eb1933 !important;
+  display: none !important;
+}
+
+.swiper-button-prev {
+  color: #eb1933 !important;
+  display: none !important;
+}
