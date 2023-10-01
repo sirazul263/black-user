@@ -79,7 +79,7 @@ const TopBar = ({ cartItemsCount }) => {
                   <div className="result-list">
                     <div>
                       {loading ? (
-                        <p>Loading...</p>
+                        <p className="text-center">Loading...</p>
                       ) : (
                         <div>
                           {result ? (
@@ -100,7 +100,11 @@ const TopBar = ({ cartItemsCount }) => {
                                     alt="Category"
                                     src={res.image_urls[0]}
                                     className="img-fluid me-2"
-                                    style={{ height: 25 }}
+                                    style={{
+                                      height: 25,
+                                      width: 30,
+                                      borderRadius: 5,
+                                    }}
                                   />
                                   <p className="mb-1 fw-bold cursor-pointer hover-class">
                                     {res.name.toUpperCase()}
