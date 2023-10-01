@@ -1,9 +1,13 @@
 import axios from "axios";
 const api = process.env.API_URL;
 
-export const getProducts = async (setLoading, Id) => {
+export const getProducts = async (setLoading, Id, text) => {
   setLoading(true);
-  const url = Id ? `${api}/products?category_id=${Id}` : `${api}/products/`;
+  const url = Id
+    ? `${api}/products?category_id=${Id}`
+    : text
+    ? `${api}/products/?search=${text}`
+    : `${api}/products`;
   try {
     const res = await axios.get(url);
     setLoading(false);

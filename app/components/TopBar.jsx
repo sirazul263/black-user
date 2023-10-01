@@ -1,18 +1,43 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MenuModal from "./MenuModal";
+import { getProducts } from "../services/productServices";
 
 const TopBar = ({ cartItemsCount }) => {
   const router = useRouter();
   const [text, setText] = useState("");
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (text) {
+      if (!isOpen) {
+        setIsOpen(true);
+      }
+      const fetchProducts = async () => {
+        const products = await getProducts(setLoading, "", text);
+        if (products.hasOwnProperty("data") && products.data.length > 0) {
+          setResult(products);
+        }
+      };
+      fetchProducts();
+    }
+  }, [text]);
+
+  useEffect(() => {
+    if (!text) {
+      setIsOpen(false);
+    }
+  }, [text]);
+
   return (
     <div className="bg-clr-primary py-2">
       <div className="container ">
         <div className="row">
-          <div className="col-md-4 col-3">
+          <div className="col-md-4 ">
             <img
               src="../../img/logo.svg"
               alt="logo"
@@ -21,8 +46,8 @@ const TopBar = ({ cartItemsCount }) => {
               onClick={() => router.push("/")}
             />
           </div>
-          <div className="col-md-4 col-9">
-            <div className="search-bar mt-3 ">
+          <div className="col-md-4 ">
+            <div className="search-bar mt-md-3 ">
               <div className="search-box position-relative ">
                 <button
                   className="btn position-absolute start-0 py-2"
@@ -50,13 +75,49 @@ const TopBar = ({ cartItemsCount }) => {
                   onChange={(e) => setText(e.target.value)}
                   value={text}
                 />
-                {/* <MenuModal isOpen={isOpen} setIsOpen={setIsOpen}>
+                <MenuModal isOpen={isOpen} setIsOpen={setIsOpen}>
                   <div className="result-list">
-                    <div>A</div>
-                    <div>A</div>
-                    <div>A</div>
+                    <div>
+                      {loading ? (
+                        <p>Loading...</p>
+                      ) : (
+                        <div>
+                          {result ? (
+                            <div className="px-4 pb-3 text-dark ">
+                              {result.data.map((res, i) => (
+                                <div
+                                  key={i}
+                                  onClick={() => {
+                                    router.push(
+                                      `/product/details?Id=${res.id}`
+                                    );
+                                    setIsOpen(false);
+                                    setText("");
+                                  }}
+                                  className="d-flex"
+                                >
+                                  <img
+                                    alt="Category"
+                                    src={res.image_urls[0]}
+                                    className="img-fluid me-2"
+                                    style={{ height: 25 }}
+                                  />
+                                  <p className="mb-1 fw-bold cursor-pointer hover-class">
+                                    {res.name.toUpperCase()}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="text-center">
+                              <p>No results found !</p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </MenuModal> */}
+                </MenuModal>
               </div>
             </div>
           </div>

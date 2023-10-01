@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 const MenuModal = ({ children, isOpen, setIsOpen }) => {
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef, setIsOpen);
+  // useOutsideAlerter(wrapperRef, setIsOpen);
 
   if (!isOpen) {
     return null;

@@ -28,6 +28,7 @@ const ProductSummaryNow = ({ items, setItems, total, option }) => {
       sessionStorage.removeItem("data");
     }
   };
+
   return (
     <div className=" mb-4">
       <div className="is-shadow p-md-4 p-3 radius-16">

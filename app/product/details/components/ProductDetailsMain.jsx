@@ -11,13 +11,18 @@ import {
 } from "react-icons/bi";
 import SizeModal from "./SizeModal";
 import { useRouter } from "next/navigation";
-import { getSingleProduct } from "../../../services/productServices";
+import {
+  getProducts,
+  getSingleProduct,
+} from "../../../services/productServices";
 import Loader from "../../../components/Loader";
 import { useSearchParams } from "next/navigation";
 import { Store } from "../../../utils/Store";
 import { toast } from "react-toastify";
 import { addToCart } from "../../../services/orderServices";
 import Cookies from "js-cookie";
+import Products from "../../../components/Products";
+import ReactPaginate from "react-paginate";
 
 const ProductDetailsMain = () => {
   const router = useRouter();
@@ -67,6 +72,7 @@ const ProductDetailsMain = () => {
         id: variationId.id,
         quantity: quantity,
         color: variationId.color,
+        size: size,
       },
     };
     if (variationId.quantity < quantity) {
@@ -113,11 +119,43 @@ const ProductDetailsMain = () => {
         id: variationId.id,
         quantity: item,
         color: variationId.color,
+        size: size,
       },
     };
     sessionStorage.setItem("data", JSON.stringify(data));
     router.push("/checkout?type=buyNow");
   };
+
+  //Related product
+  const [products, setProducts] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [pageNumber, setPageNumber] = useState(0);
+  const dataPerPage = 10;
+  const pagesVisited = pageNumber * dataPerPage;
+
+  useEffect(() => {
+    if (result) {
+      const fetchProducts = async () => {
+        const products = await getProducts(setLoading, result.category_id);
+        setProducts(products);
+      };
+      fetchProducts();
+    }
+  }, [result]);
+
+  const pageCount = Math.ceil(products && products.data.length / dataPerPage);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+    window.scrollTo(0, 0);
+  };
+
+  const displayProducts =
+    products &&
+    products.data
+      .slice(pagesVisited, pagesVisited + dataPerPage)
+      .map((res, index) => {
+        return <Products res={res} key={index} />;
+      });
 
   return (
     <section>
@@ -368,14 +406,74 @@ const ProductDetailsMain = () => {
                 </div>
               </div>
 
-              {/* <div className="mt-5">
-        <h5 className="fw-bold mb-5">Related Products</h5>
-        <div className="row">
-          {result.map((product, index) => (
-            <Products res={product} key={index} />
-          ))}
-        </div>
-      </div> */}
+              <div className="mt-5">
+                <h5 className="fw-bold mb-5">Related Products</h5>
+                <div className="row">
+                  {isLoading ? (
+                    <Loader />
+                  ) : (
+                    <div>
+                      {" "}
+                      {products && products.data.length > 0 ? (
+                        <>
+                          <div className="row">{displayProducts}</div>
+                          <div className="pagination mt-5 flex justify-content-center">
+                            <ReactPaginate
+                              previousLabel={
+                                <span aria-hidden="true">
+                                  <svg
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 14 14"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M9.04102 11.0833L4.95768 6.99996L9.04102 2.91663"
+                                      stroke="#9B98B4"
+                                      strokeWidth="1.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                  </svg>
+                                </span>
+                              }
+                              nextLabel={
+                                <span aria-hidden="true">
+                                  <svg
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 14 14"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M4.95898 11.0833L9.04232 6.99996L4.95898 2.91663"
+                                      stroke="#79828D"
+                                      strokeWidth="1.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                  </svg>
+                                </span>
+                              }
+                              pageCount={pageCount}
+                              onPageChange={changePage}
+                              containerClassName={`paginationBtn`}
+                              previousLinkClassName={"previousBtn"}
+                              nextLinkClassName={"nextBtn"}
+                              disabledClassName={"paginationDisabled"}
+                              activeClassName={"paginationActiveBtn"}
+                            />
+                          </div>
+                        </>
+                      ) : (
+                        <div className="text-center">No products found !</div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
               {showSize && <SizeModal show={showSize} setShow={setShowSize} />}
             </>
           )}
