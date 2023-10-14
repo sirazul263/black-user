@@ -13,3 +13,12 @@ export const getOffers = async (setLoading) => {
     return e.response.data;
   }
 };
+
+export const getNews = async () => {
+  try {
+    const res = await axios.get(`${api}/news`);
+    return res.data;
+  } catch (e) {
+    return e.response.data;
+  }
+};

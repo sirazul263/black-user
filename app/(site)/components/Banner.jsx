@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getOffers } from "../../services/offerServices";
+import { getNews, getOffers } from "../../services/offerServices";
 import Loader from "../../components/Loader";
 const Banner = () => {
   //Fetching Data
@@ -15,11 +15,32 @@ const Banner = () => {
     fetchOffers();
   }, []);
 
+  const [news, setNews] = useState(null);
+  useEffect(() => {
+    const fetchNews = async () => {
+      const res = await getNews();
+      setNews(res);
+    };
+    fetchNews();
+  }, []);
+
   return (
     <div className="container mt-md-5 mt-4">
-      <marquee style={{ padding: " 10px 0" }} className="fw-bold">
-        COMPLETE YOUR OUTFIT WITH CAPS. GETS AWESOME DESIGN DAILY
-      </marquee>
+      <div class="marquee-wrapper">
+        <marquee
+          style={{
+            padding: " 10px 0",
+            behavior: "scroll",
+            scrollamount: "1",
+          }}
+          className="fw-bold"
+        >
+          {news &&
+            news.data.map((data, i) => <span key={i}>{data.content}</span>)}
+        </marquee>
+      </div>
+      <marquee></marquee>
+
       {loading ? (
         <Loader />
       ) : (

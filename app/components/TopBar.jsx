@@ -37,16 +37,27 @@ const TopBar = ({ cartItemsCount }) => {
     <div className="bg-clr-primary py-2">
       <div className="container ">
         <div className="row">
-          <div className="col-md-4 ">
-            <img
-              src="../../img/logo.svg"
-              alt="logo"
-              style={{ height: 70 }}
-              className="cursor-pointer"
-              onClick={() => router.push("/")}
-            />
+          <div className="col-md-4 col-2">
+            <div className="d-md-block d-none">
+              <img
+                src="../../img/logo.svg"
+                alt="logo"
+                style={{ maxHeight: 70 }}
+                className="cursor-pointer"
+                onClick={() => router.push("/")}
+              />
+            </div>
+            <div className="d-block d-md-none">
+              <img
+                src="../../img/logo.svg"
+                alt="logo"
+                style={{ maxHeight: 50 }}
+                className="cursor-pointer"
+                onClick={() => router.push("/")}
+              />
+            </div>
           </div>
-          <div className="col-md-4 ">
+          <div className="col-md-4 col-10">
             <div className="search-bar mt-md-3 ">
               <div className="search-box position-relative ">
                 <button

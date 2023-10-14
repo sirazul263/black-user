@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import {
   BiLogoFacebook,
   BiLogoInstagramAlt,
@@ -9,23 +10,29 @@ import {
 const Footer = () => {
   return (
     <footer className="mt-md-5 mt-3">
-      <div className="d-md-none " style={{ backgroundColor: "#C2AB1C" }}>
-        <div className="d-flex justify-content-between text-white px-2 py-2">
-          <div className="fs-12 fw-300">
-            <BiLogoFacebook size={16} />
-            facebook
-          </div>
-          <div className="fs-12 fw-300">
-            <BiLogoInstagramAlt size={16} className="me-1" />
-            instagram
-          </div>
-          <div className="fs-12 fw-300">
-            <BiLogoLinkedin size={16} className="me-1" />
-            linkedin
-          </div>
-          <div className="fs-12 fw-300">
-            <BiLogoTwitter size={16} className="" />
-            twitter
+      <div style={{ backgroundColor: "#C2AB1C" }}>
+        <div className="container ">
+          <div className="row">
+            <div className="col-md-8 offset-md-2">
+              <div className="d-flex justify-content-between text-white px-2 py-2">
+                <div className="fs-12 fw-300">
+                  <BiLogoFacebook size={16} />
+                  facebook
+                </div>
+                <div className="fs-12 fw-300">
+                  <BiLogoInstagramAlt size={16} className="me-1" />
+                  instagram
+                </div>
+                <div className="fs-12 fw-300">
+                  <BiLogoLinkedin size={16} className="me-1" />
+                  linkedin
+                </div>
+                <div className="fs-12 fw-300">
+                  <BiLogoTwitter size={16} className="" />
+                  twitter
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -140,6 +147,15 @@ const Footer = () => {
             <p className="fs-14 fw-bold">
               &copy;{new Date().getFullYear()}, All rights reserved
             </p>
+          </div>
+          <div className="text-center">
+            Developed By :{" "}
+            <Link
+              href="https://brogrammerslab.com/"
+              className="text-decoration-none text-dark fw-bold"
+            >
+              Brogrammers Lab
+            </Link>
           </div>
         </div>
       </div>

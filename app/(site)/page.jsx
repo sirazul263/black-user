@@ -13,7 +13,7 @@ export default async function Home() {
       <Banner />
       <SampleProduct />
       <Promotion />
-      <Review />
+      {/* <Review /> */}
     </main>
   );
 }
