@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { getNews, getOffers } from "../../services/offerServices";
 import Loader from "../../components/Loader";
 const Banner = () => {
@@ -48,15 +48,19 @@ const Banner = () => {
           {result && result.hasOwnProperty("data") && (
             <div className="row">
               {result.data.map((res, i) => (
-                <div className="col-md-6" key={i}>
-                  <div className="d-flex justify-content-center">
-                    <img
-                      alt="Category"
-                      src="../../../img/banner.svg"
-                      className="w-100 banner"
-                    />
-                  </div>
-                </div>
+                <Fragment key={i}>
+                  {res.published === 1 && res.status === "active" && (
+                    <div className="col-md-6">
+                      <div className="d-flex justify-content-center">
+                        <img
+                          alt="Category"
+                          src={res.banner_image}
+                          className="w-100 banner"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </Fragment>
               ))}
             </div>
           )}

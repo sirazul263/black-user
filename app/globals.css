@@ -411,3 +411,11 @@ input {
 .swiper-pagination-bullet-active {
   background-color: white !important;
 }
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 0px;
+  background-color: #eb1933;
+  border-radius: 5px;
+  padding: 3px 20px;
+}
