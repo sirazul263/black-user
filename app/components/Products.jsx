@@ -8,9 +8,9 @@ const Products = ({ res }) => {
   const offerText = hasOffer
     ? offer.discount_type === "amount"
       ? `৳ ${offer.discount} 
-    off ${offer.campaign_name}`
+    off`
       : `${offer.discount}% 
-    off ${offer.campaign_name}`
+    off `
     : "";
   return (
     <div className="col-md-3 col-6 mb-4 d-flex justify-content-center">
