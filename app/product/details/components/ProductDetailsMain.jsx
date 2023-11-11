@@ -88,7 +88,7 @@ const ProductDetailsMain = () => {
     }
     const guest = Cookies.get("user_id");
     const cartData = {
-      user_id: guest,
+      guest_identifier: guest,
       product_variation_id: variationId.id,
       quantity: quantity,
     };

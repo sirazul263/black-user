@@ -109,9 +109,8 @@ const CheckoutMain = () => {
                         if (sessionStorage.getItem("data") !== undefined) {
                           sessionStorage.removeItem("data");
                         }
-                        router.push(
-                          `/booking-success?bookingId=${res.cart.id}`
-                        );
+                        const id = type === "buyNow" ? res.cart.id : res.id;
+                        router.push(`/booking-success?bookingId=${id}`);
                       } else {
                         setError(res.message);
                       }
