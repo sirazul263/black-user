@@ -44,6 +44,7 @@ export const addToCart = async (data) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "Guest-Identifier": data.user_id,
       },
     });
 

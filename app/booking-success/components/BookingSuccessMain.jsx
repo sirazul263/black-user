@@ -1,9 +1,11 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { LiaAngleLeftSolid } from "react-icons/lia";
 
 const BookingSuccessMain = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const bookingId = searchParams.get("bookingId");
   return (
     <div className="my-5 d-flex justify-content-center ">
       <div>
@@ -18,7 +20,7 @@ const BookingSuccessMain = () => {
 
         <p className="fw-semibold mb-1">Thanks for placing order</p>
         <p className="fw-semibold" style={{ color: "#AA9B14" }}>
-          01dc1370-3df6
+          {bookingId}
         </p>
         <p className="fw-semibold">
           We will send you a notification within 5 days when <br /> it ships.

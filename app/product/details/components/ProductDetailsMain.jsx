@@ -42,15 +42,20 @@ const ProductDetailsMain = () => {
   }, []);
 
   const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
   const [item, setItem] = useState(1);
 
   const [showSize, setShowSize] = useState(false);
-
   const { state, dispatch } = useContext(Store);
-
   const addToCartHandler = async () => {
     if (!size) {
       toast.warning("Please select a size", {
+        autoClose: 200,
+      });
+      return;
+    }
+    if (!color) {
+      toast.warning("Please select a color", {
         autoClose: 200,
       });
       return;
@@ -71,7 +76,7 @@ const ProductDetailsMain = () => {
       variation: {
         id: variationId.id,
         quantity: quantity,
-        color: variationId.color,
+        color: color,
         size: size,
       },
     };
@@ -88,12 +93,16 @@ const ProductDetailsMain = () => {
       quantity: quantity,
     };
     const res = await addToCart(cartData);
-    if (res) {
+    if (res && !res.hasOwnProperty("error") && !res.hasOwnProperty("errors")) {
       dispatch({
         type: "CART_ADD_ITEM",
         payload: { ...data },
       });
-      toast.success("Product  added to the cart", {
+      toast.success("Product added to the cart", {
+        autoClose: 200,
+      });
+    } else {
+      toast.warning(res.error, {
         autoClose: 200,
       });
     }
@@ -102,6 +111,12 @@ const ProductDetailsMain = () => {
   const handleBuyNow = () => {
     if (!size) {
       toast.warning("Please select a size", {
+        autoClose: 200,
+      });
+      return;
+    }
+    if (!color) {
+      toast.warning("Please select a color", {
         autoClose: 200,
       });
       return;
@@ -118,7 +133,7 @@ const ProductDetailsMain = () => {
       variation: {
         id: variationId.id,
         quantity: item,
-        color: variationId.color,
+        color: color,
         size: size,
       },
     };
@@ -243,6 +258,40 @@ const ProductDetailsMain = () => {
                               <h3 className="person-selection  mb-0 is-radius-8 fs-12 fw-bold text-clr-dark">
                                 <span className="bg-color is-radius-16 "></span>{" "}
                                 {s.size.toUpperCase()}
+                              </h3>
+                            </label>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="d-flex justify-content-between align-items-center mt-md-4">
+                      <p className="fw-bold">CHOOSE COLOR</p>
+                    </div>
+
+                    <div className="form-group select-title ">
+                      <div className="d-flex mb-1 is-radius-16">
+                        {result.variations.map((s, i) => (
+                          <div className="" key={i}>
+                            <label
+                              className="position-relative select-label me-3 is-radius-16 cursor-pointer"
+                              htmlFor={`color-${s.product_id}`}
+                            >
+                              <input
+                                type="radio"
+                                name="colors"
+                                id={`color-${s.product_id}`}
+                                value={s.color}
+                                checked={s.color === color ? true : false}
+                                className="form-control"
+                                style={{
+                                  display: "none",
+                                }}
+                                onChange={(e) => setColor(s.color)}
+                              />
+                              <h3 className="person-selection  mb-0 is-radius-8 fs-12 fw-bold text-clr-dark">
+                                <span className="bg-color is-radius-16 "></span>{" "}
+                                {s.color.toUpperCase()}
                               </h3>
                             </label>
                           </div>
@@ -413,7 +462,6 @@ const ProductDetailsMain = () => {
                     <Loader />
                   ) : (
                     <div>
-                      {" "}
                       {products && products.data.length > 0 ? (
                         <>
                           <div className="row">{displayProducts}</div>
